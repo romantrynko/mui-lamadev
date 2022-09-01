@@ -1,46 +1,19 @@
-import styled from '@emotion/styled';
-import { Add, Settings } from '@mui/icons-material';
-import { Button, Typography } from '@mui/material';
+import { Rightbar } from './components/Rightbar';
+import { Sidebar } from './components/Sidebar';
+import { Feed } from './components/Feed';
+import { Box, Stack } from '@mui/material';
+import { Navbar } from './components/Navbar';
 
 function App() {
-  const BlueButton = styled(Button)({
-    background: 'skyblue',
-    color: '#888',
-    margin: 5,
-    '&:hover': {
-      background: 'lightBlue',
-      transform: 'translateY(-1px)'
-    },
-    '&:disabled': {
-      background: 'gray',
-      color: 'white'
-    }
-  });
-
   return (
-    <div>
-      <Button variant="text">Text</Button>
-      <Button
-        startIcon={<Settings />}
-        variant="contained"
-        color="secondary"
-        size="small"
-      >
-        Settings
-      </Button>
-      <Button
-        startIcon={<Add />}
-        variant="contained"
-        color="success"
-        size="small"
-      >
-        Add new post
-      </Button>
-      <Typography variant="h1" component="p">
-        It uses typography
-      </Typography>
-      <BlueButton>My button</BlueButton>
-    </div>
+    <Box>
+      <Navbar />
+      <Stack direction="row" spacing={2} justifyContent="space-between">
+        <Sidebar />
+        <Feed />
+        <Rightbar />
+      </Stack>
+    </Box>
   );
 }
 
