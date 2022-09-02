@@ -5,11 +5,14 @@ import {
   Badge,
   Box,
   InputBase,
+  Menu,
+  MenuItem,
   styled,
   Toolbar,
   Typography
 } from '@mui/material';
 import React from 'react';
+import { useState } from 'react';
 
 const StyledToolbar = styled(Toolbar)({
   display: 'flex',
@@ -24,12 +27,25 @@ const Search = styled('div')(({ theme }) => ({
 }));
 
 const Icons = styled(Box)(({ theme }) => ({
+  display: 'none',
+  gap: '10px',
+  alignItems: 'center',
+  [theme.breakpoints.up('sm')]: {
+    display: 'flex'
+  }
+}));
+
+const UserBox = styled(Box)(({ theme }) => ({
   display: 'flex',
   gap: '20px',
-  alignItems: 'center'
+  alignItems: 'center',
+  [theme.breakpoints.up('sm')]: {
+    display: 'none'
+  }
 }));
 
 export const Navbar = () => {
+  const [open, setOpen] = useState(false);
   return (
     <AppBar position="sticky">
       <StyledToolbar>
@@ -50,9 +66,36 @@ export const Navbar = () => {
           <Avatar
             sx={{ width: '30px', height: '30px' }}
             src="https://mui.com/static/images/avatar/1.jpg"
+            onClick={(e) => setOpen(true)}
           />
         </Icons>
+        <UserBox onClick={(e) => setOpen(true)}>
+          <Avatar
+            sx={{ width: '30px', height: '30px' }}
+            src="https://mui.com/static/images/avatar/1.jpg"
+          />
+          <Typography>Roman</Typography>
+        </UserBox>
       </StyledToolbar>
+      <Menu
+        id="demo-positioned-menu"
+        aria-labelledby="demo-positioned-button"
+        // anchorEl={anchorEl}
+        open={open}
+        onClose={(e) => setOpen(false)}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right'
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left'
+        }}
+      >
+        <MenuItem>Profile</MenuItem>
+        <MenuItem>My account</MenuItem>
+        <MenuItem>Logout</MenuItem>
+      </Menu>
     </AppBar>
   );
 };
