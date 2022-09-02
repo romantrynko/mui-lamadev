@@ -1,7 +1,15 @@
-import { EmojiEmotions } from '@mui/icons-material';
+import {
+  DateRange,
+  EmojiEmotions,
+  Image,
+  PersonAdd,
+  VideoCameraBack
+} from '@mui/icons-material';
 import {
   Avatar,
   Box,
+  Button,
+  ButtonGroup,
   Modal,
   Stack,
   styled,
@@ -46,7 +54,7 @@ const MyModal = () => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={style}>
+      <Box sx={style} bgcolor={'background.default'} color={'text.primary'}>
         <Typography variant="h6" color="gray" textAlign="center">
           Create Post
         </Typography>
@@ -67,8 +75,21 @@ const MyModal = () => {
           variant="standard"
         />
         <Stack direction="row" gap={1}>
-          <EmojiEmotions/>
+          <EmojiEmotions color="primary" />
+          <PersonAdd color="secondary" />
+          <VideoCameraBack color="error" />
+          <Image color="success" />
         </Stack>
+        <ButtonGroup
+          fullWidth
+          variant="contained"
+          aria-label="outlined primary button group"
+        >
+          <Button>Post</Button>
+          <Button sx={{ width: '100px' }}>
+            <DateRange />
+          </Button>
+        </ButtonGroup>
       </Box>
     </Modal>
   );

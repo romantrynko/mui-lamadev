@@ -19,7 +19,11 @@ import {
 import React from 'react';
 import MaterialUISwitch from './UI/MuiSwitch';
 
-export const Sidebar = () => {
+export const Sidebar = ({ mode, setMode }) => {
+  const toggleMode = () => {
+    setMode(mode === 'dark' ? 'light' : 'dark');
+  };
+
   return (
     <Box
       flex={1}
@@ -84,9 +88,15 @@ export const Sidebar = () => {
               <ListItemText primary="Profile" />
             </ListItemButton>
           </ListItem>
-          <ListItem sx={{ display: 'flex', background: 'rgb(241 245 249)' }}>
+          <ListItem sx={{ display: 'flex' }}>
             <FormControlLabel
-              control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+              control={
+                <MaterialUISwitch
+                  sx={{ m: 1 }}
+                  defaultChecked
+                  onChange={toggleMode}
+                />
+              }
               label="Dark mode"
             />
           </ListItem>
