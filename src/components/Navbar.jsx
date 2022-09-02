@@ -47,7 +47,7 @@ const UserBox = styled(Box)(({ theme }) => ({
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
   return (
-    <AppBar position="sticky">
+    <AppBar position="sticky" sx={{ background: 'rgb(30 41 59)' }}>
       <StyledToolbar>
         <Typography variant="h6" sx={{ display: { xs: 'none', sm: 'block' } }}>
           Trynko DEV
@@ -65,14 +65,14 @@ export const Navbar = () => {
           </Badge>
           <Avatar
             sx={{ width: '30px', height: '30px' }}
-            src="https://mui.com/static/images/avatar/1.jpg"
+            src="https://i.pravatar.cc/300"
             onClick={(e) => setOpen(true)}
           />
         </Icons>
         <UserBox onClick={(e) => setOpen(true)}>
           <Avatar
             sx={{ width: '30px', height: '30px' }}
-            src="https://mui.com/static/images/avatar/1.jpg"
+            src="https://i.pravatar.cc/300"
           />
           <Typography>Roman</Typography>
         </UserBox>
